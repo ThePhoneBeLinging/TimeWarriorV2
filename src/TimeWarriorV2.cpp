@@ -4,8 +4,6 @@
 
 #include "TimeWarriorV2.h"
 
-#include <iostream>
-
 void TimeWarriorV2::update(float deltaTime)
 {
 }
