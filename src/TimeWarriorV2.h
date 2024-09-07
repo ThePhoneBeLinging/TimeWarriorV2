@@ -17,7 +17,10 @@ public:
     static void reset();
 
 private:
+    static void handleMovement();
     static inline std::vector<Player> players_;
+    static inline float entranceX = 0;
+    static inline float entranceY = 0;
 };
 
 

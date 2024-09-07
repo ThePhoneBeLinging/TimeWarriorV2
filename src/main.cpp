@@ -7,12 +7,10 @@
 
 #include "TimeWarriorV2.h"
 #include "EngineBase/EngineBase.h"
-#include "Objects/Player.h"
 
 int main()
 {
-    std::cout << "hello world" << std::endl;
-    auto player = Player();
+    TimeWarriorV2::setUp();
     EngineBase::startGUI(TimeWarriorV2::update);
     return 0;
 }

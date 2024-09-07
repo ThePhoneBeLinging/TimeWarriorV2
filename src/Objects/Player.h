@@ -14,15 +14,14 @@ class Player : public DrawAble
 {
 public:
     Player();
-    void update();
-    void reset();
-
+    void update(float deltaTime);
+    void reset(float x, float y);
+    SpeedAble speed_;
 private:
-    bool ghost_;
     std::vector<float> xMovement_;
     std::vector<float> yMovement_;
     int index;
-    SpeedAble speed_;
+
 };
 
 
