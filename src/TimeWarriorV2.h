@@ -18,7 +18,7 @@ public:
 
 private:
     static void handleMovement();
-    static inline std::vector<Player> players_;
+    static inline std::vector<std::shared_ptr<Player>> players_;
     static inline float entranceX = 0;
     static inline float entranceY = 0;
 };
