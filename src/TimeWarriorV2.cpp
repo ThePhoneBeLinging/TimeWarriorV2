@@ -9,51 +9,69 @@
 void TimeWarriorV2::update(float deltaTime)
 {
     handleMovement();
+    for (const auto& player : players_)
+    {
+        if (player != nullptr)
+        {
+            player->update(deltaTime);
+        }
+    }
 }
 
 void TimeWarriorV2::setUp()
 {
+    // Amount of clones + player
+    players_.resize(5);
     EngineBase::loadTexture("Resources/Images/WKing.png");
     EngineBase::loadTexture("Resources/Images/WBishop.png");
-    players_.emplace_back(std::make_shared<Player>(entranceX,entranceY));
-    players_[0]->x(0);
-    players_[0]->y(0);
+    players_[0] = std::make_shared<Player>(entranceX_,entranceY_);
 }
 
 void TimeWarriorV2::reset()
 {
     for (auto& player : players_)
     {
-        player->resetPos(entranceX,entranceY);
+        if (player == nullptr) continue;
+        player->resetPos(entranceX_,entranceY_);
     }
+    if (playerIndex_ == 4)
+    {
+        playerIndex_ = -1;
+    }
+    players_[++playerIndex_] = std::make_shared<Player>(entranceX_,entranceY_);
 }
 
 void TimeWarriorV2::handleMovement()
 {
-    if (EngineBase::keyPressed(ENGINEBASE_KEY_ENTER))
+    if (EngineBase::keyPressed(ENGINEBASE_KEY_ENTER) && !enterPressed_)
     {
         reset();
+        enterPressed_ = true;
         return;
+    }
+    if (EngineBase::keyReleased(ENGINEBASE_KEY_ENTER))
+    {
+        enterPressed_ = false;
     }
 
     // Player movement
-    players_[0]->speed_.xSpeed(0);
-    players_[0]->speed_.ySpeed(0);
+    players_[playerIndex_]->speed_.xSpeed(0);
+    players_[playerIndex_]->speed_.ySpeed(0);
     if (EngineBase::keyPressed(ENGINEBASE_KEY_W))
     {
-        players_[0]->speed_.ySpeed(-100);
+        players_[playerIndex_]->speed_.ySpeed(-100);
     }
     if (EngineBase::keyPressed(ENGINEBASE_KEY_S))
     {
-        players_[0]->speed_.ySpeed(100);
+        players_[playerIndex_]->speed_.ySpeed(100);
     }
     if (EngineBase::keyPressed(ENGINEBASE_KEY_A))
     {
-        players_[0]->speed_.xSpeed(-100);
+        players_[playerIndex_]->speed_.xSpeed(-100);
     }
     if (EngineBase::keyPressed(ENGINEBASE_KEY_D))
     {
-        players_[0]->speed_.xSpeed(100);
+        players_[playerIndex_]->speed_.xSpeed(100);
     }
 
 }

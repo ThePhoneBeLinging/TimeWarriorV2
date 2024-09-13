@@ -17,10 +17,9 @@ void Player::update(float deltaTime)
     {
         xMovement_.push_back(speed_.xSpeed());
         yMovement_.push_back(speed_.ySpeed());
-        return;
     }
 
-    if (timeSinceLastMovement_ > timePassed_[index_])
+    else
     {
         if (xMovement_.size() > index_)
         {
@@ -28,11 +27,6 @@ void Player::update(float deltaTime)
             speed_.ySpeed(yMovement_[index_]);
         }
         index_++;
-        timeSinceLastMovement_ = 0;
-    }
-    else
-    {
-        timeSinceLastMovement_ += deltaTime;
     }
 }
 
