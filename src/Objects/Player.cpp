@@ -15,16 +15,15 @@ void Player::update(float deltaTime)
 {
     if (!ghost_)
     {
-        xMovement_.push_back(speed_.xSpeed());
-        yMovement_.push_back(speed_.ySpeed());
+        xMovement_.push_back(x_);
+        yMovement_.push_back(y_);
     }
-
     else
     {
         if (xMovement_.size() > index_)
         {
-            speed_.xSpeed(xMovement_[index_]);
-            speed_.ySpeed(yMovement_[index_]);
+            x(xMovement_[index_]);
+            y(yMovement_[index_]);
         }
         index_++;
     }
