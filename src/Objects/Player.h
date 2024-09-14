@@ -18,9 +18,9 @@ public:
     void resetPos(float x, float y);
     SpeedAble speed_;
 private:
-    std::vector<float> xMovement_;
-    std::vector<float> yMovement_;
-    std::vector<float> timePassed_;
+    std::vector<float> xPositions_;
+    std::vector<float> yPositions_;
+    std::vector<float> timePassedForPos_;
     float timeSinceLastMovement_;
     int index_;
     bool ghost_;

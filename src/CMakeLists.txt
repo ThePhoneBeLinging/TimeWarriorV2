@@ -7,6 +7,8 @@ add_executable(TimeWarriorV2
         TimeWarriorV2.h
         Objects/Player.cpp
         Objects/Player.h
+        Objects/SavedPosition.cpp
+        Objects/SavedPosition.h
 )
 
 target_link_libraries(TimeWarriorV2 PUBLIC
