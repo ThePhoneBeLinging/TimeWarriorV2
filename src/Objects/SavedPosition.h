@@ -10,6 +10,7 @@ class SavedPosition
 {
 public:
     SavedPosition(float x, float y, float timePassedAtPoint);
+    ~SavedPosition() = default;
     float x_;
     float y_;
     float timePassedAtPoint_;
