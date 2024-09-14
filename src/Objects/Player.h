@@ -5,9 +5,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <vector>
+#include <memory>
 
 #include "EngineBase/DrawAble.h"
 #include "EngineBase/SpeedAble.h"
+#include "SavedPosition.h"
 
 
 class Player : public DrawAble
@@ -18,10 +20,8 @@ public:
     void resetPos(float x, float y);
     SpeedAble speed_;
 private:
-    std::vector<float> xPositions_;
-    std::vector<float> yPositions_;
-    std::vector<float> timePassedForPos_;
-    float timeSinceLastMovement_;
+    std::vector<std::shared_ptr<SavedPosition>> positions_;
+    float timePassed_;
     int index_;
     bool ghost_;
 };
