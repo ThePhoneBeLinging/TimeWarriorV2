@@ -11,6 +11,7 @@ add_executable(TimeWarriorV2
         Objects/SavedPosition.h
         Objects/PressurePlate.cpp
         Objects/PressurePlate.h
+        Objects/ActivateAble/IActivateAble.h
 )
 
 target_link_libraries(TimeWarriorV2 PUBLIC
