@@ -9,6 +9,7 @@
 void TimeWarriorV2::update(float deltaTime)
 {
     handleMovement();
+    handlePressurePlates();
     for (const auto& player : players_)
     {
         if (player != nullptr)
@@ -25,6 +26,7 @@ void TimeWarriorV2::setUp()
     EngineBase::loadTexture("Resources/Images/WKing.png");
     EngineBase::loadTexture("Resources/Images/WBishop.png");
     players_[0] = std::make_shared<Player>(entranceX_,entranceY_);
+    pressurePlates_.emplace_back(std::make_shared<PressurePlate>(100,100));
 }
 
 void TimeWarriorV2::reset()
@@ -74,4 +76,20 @@ void TimeWarriorV2::handleMovement()
         players_[playerIndex_]->speed_.xSpeed(100);
     }
 
+}
+
+void TimeWarriorV2::handlePressurePlates()
+{
+    for (const auto& pressurePlate : pressurePlates_)
+    {
+        for (const auto& player : players_)
+        {
+            if (player == nullptr) continue;
+            if (player->collidable_.isColliding(&pressurePlate->collidable_))
+            {
+                pressurePlate->trigger();
+                break;
+            }
+        }
+    }
 }

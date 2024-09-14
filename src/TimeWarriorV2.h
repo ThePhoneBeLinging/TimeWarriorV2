@@ -8,6 +8,7 @@
 #include <memory>
 
 #include "Objects/Player.h"
+#include "Objects/PressurePlate.h"
 
 
 class TimeWarriorV2
@@ -19,7 +20,9 @@ public:
 
 private:
     static void handleMovement();
+    static void handlePressurePlates();
     static inline std::vector<std::shared_ptr<Player>> players_;
+    static inline std::vector<std::shared_ptr<PressurePlate>> pressurePlates_;
     static inline float entranceX_ = 0;
     static inline float entranceY_ = 0;
     static inline int playerIndex_ = 0;

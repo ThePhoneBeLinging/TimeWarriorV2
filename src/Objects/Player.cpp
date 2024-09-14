@@ -4,7 +4,7 @@
 
 #include "Player.h"
 
-Player::Player(float x, float y) : DrawAble(x,y,0,0,0,0), speed_(SpeedAble(this)), index_(0), timePassed_(0)
+Player::Player(float x, float y) : DrawAble(x,y,0,0,0,0), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
 {
     this->height(50);
     this->width(50);
