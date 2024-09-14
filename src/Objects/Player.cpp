@@ -36,6 +36,8 @@ void Player::resetPos(float x, float y)
     this->x(x);
     this->y(y);
     index_ = 0;
+    // TODO Set proper texture index
+    textureIndex_ = 1;
     ghost_ = true;
     timePassed_ = 0;
     speed_.xSpeed(0);
