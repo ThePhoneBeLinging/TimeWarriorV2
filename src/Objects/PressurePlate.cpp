@@ -4,8 +4,6 @@
 
 #include "PressurePlate.h"
 
-#include <iostream>
-#include <utility>
 
 PressurePlate::PressurePlate(float x, float y) : DrawAble(x,y,0,0,0,2), collidable_(Collidable(this))
 {
