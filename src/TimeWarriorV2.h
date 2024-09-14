@@ -5,6 +5,7 @@
 #ifndef TIMEWARRIORV2_H
 #define TIMEWARRIORV2_H
 #include <vector>
+#include <memory>
 
 #include "Objects/Player.h"
 
