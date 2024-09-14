@@ -5,6 +5,7 @@
 #include "PressurePlate.h"
 
 #include <iostream>
+#include <utility>
 
 PressurePlate::PressurePlate(float x, float y) : DrawAble(x,y,0,0,0,2), collidable_(Collidable(this))
 {
@@ -12,8 +13,18 @@ PressurePlate::PressurePlate(float x, float y) : DrawAble(x,y,0,0,0,2), collidab
     this->width(50);
 }
 
+void PressurePlate::setActivateAble(std::shared_ptr<IActivateAble> activateAble)
+{
+    activateAble_ = std::move(activateAble);
+}
+
 void PressurePlate::trigger()
 {
     // TODO Implement trigger
-    std::cout << "Triggered Pressure Plate" << std::endl;
+    activateAble_->activate();
+}
+
+void PressurePlate::notTrigger()
+{
+    activateAble_->deactivate();
 }

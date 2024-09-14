@@ -12,6 +12,8 @@ add_executable(TimeWarriorV2
         Objects/PressurePlate.cpp
         Objects/PressurePlate.h
         Objects/ActivateAble/IActivateAble.h
+        Objects/ActivateAble/SlidingDoor.cpp
+        Objects/ActivateAble/SlidingDoor.h
 )
 
 target_link_libraries(TimeWarriorV2 PUBLIC

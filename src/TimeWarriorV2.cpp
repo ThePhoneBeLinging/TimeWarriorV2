@@ -5,6 +5,7 @@
 #include "TimeWarriorV2.h"
 
 #include "EngineBase/EngineBase.h"
+#include "Objects/ActivateAble/SlidingDoor.h"
 
 void TimeWarriorV2::update(float deltaTime)
 {
@@ -27,6 +28,7 @@ void TimeWarriorV2::setUp()
     EngineBase::loadTexture("Resources/Images/WBishop.png");
     players_[0] = std::make_shared<Player>(entranceX_,entranceY_);
     pressurePlates_.emplace_back(std::make_shared<PressurePlate>(100,100));
+    pressurePlates_[0]->setActivateAble(std::make_shared<SlidingDoor>(250,250));
 }
 
 void TimeWarriorV2::reset()
@@ -82,14 +84,20 @@ void TimeWarriorV2::handlePressurePlates()
 {
     for (const auto& pressurePlate : pressurePlates_)
     {
+        bool activated = false;
         for (const auto& player : players_)
         {
             if (player == nullptr) continue;
             if (player->collidable_.isColliding(&pressurePlate->collidable_))
             {
                 pressurePlate->trigger();
+                activated = true;
                 break;
             }
+        }
+        if (!activated)
+        {
+            pressurePlate->notTrigger();
         }
     }
 }
