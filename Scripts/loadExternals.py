@@ -21,7 +21,7 @@ def clone_or_pull(repo_url, target_dir):
 def main():
 
     # Ensure the 'dependencies' directory exists
-    ensure_dir_exists("dependencies")
+    ensure_dir_exists("../dependencies")
 
     # List of repository URLs to clone or pull
     repo_urls = [
@@ -32,7 +32,7 @@ def main():
 
     # Clone or pull each repository
     for repo_url in repo_urls:
-        clone_or_pull(repo_url, "dependencies")
+        clone_or_pull(repo_url, "../dependencies")
 
 if __name__ == '__main__':
     main()
