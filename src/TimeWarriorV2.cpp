@@ -6,6 +6,7 @@
 
 #include "EngineBase/EngineBase.h"
 #include "Objects/ActivateAble/SlidingDoor.h"
+#include "Texture/TextureLoader.h"
 
 void TimeWarriorV2::update(float deltaTime)
 {
@@ -24,46 +25,7 @@ void TimeWarriorV2::setUp()
 {
     // Amount of clones + player
     players_.resize(5);
-    // Player up
-    EngineBase::loadTexture("Resources/Images/Player.png");
-    // Player Up
-    EngineBase::loadTexture("Resources/Images/WBishop.png");
-    // Player Left
-    EngineBase::loadTexture("Resources/Images/WQueen.png");
-    // Player Right
-    EngineBase::loadTexture("Resources/Images/WKing.png");
-    // Ghost1 Down
-    EngineBase::loadTexture("Resources/Images/Ghost1.png");
-    // Ghost1 Up
-    EngineBase::loadTexture("Resources/Images/Ghost1Up.png");
-    // Ghost1 Left
-    EngineBase::loadTexture("Resources/Images/Ghost1Left.png");
-    // Ghost1 Right
-    EngineBase::loadTexture("Resources/Images/Ghost1Right.png");
-    // Ghost2 Down
-    EngineBase::loadTexture("Resources/Images/Ghost2.png");
-    // Ghost2 Up
-    EngineBase::loadTexture("Resources/Images/Ghost2Up.png");
-    // Ghost2 Left
-    EngineBase::loadTexture("Resources/Images/Ghost2Left.png");
-    // Ghost2 Right
-    EngineBase::loadTexture("Resources/Images/Ghost2Right.png");
-    // Ghost3 Down
-    EngineBase::loadTexture("Resources/Images/Ghost3.png");
-    // Ghost3 Up
-    EngineBase::loadTexture("Resources/Images/Ghost3Up.png");
-    // Ghost3 Left
-    EngineBase::loadTexture("Resources/Images/Ghost3Left.png");
-    // Ghost3 Right
-    EngineBase::loadTexture("Resources/Images/Ghost3Right.png");
-    // Ghost4 Down
-    EngineBase::loadTexture("Resources/Images/Ghost4.png");
-    // Ghost4 Up
-    EngineBase::loadTexture("Resources/Images/Ghost4Up.png");
-    // Ghost4 Left
-    EngineBase::loadTexture("Resources/Images/Ghost4Left.png");
-    // Ghost4 Right
-    EngineBase::loadTexture("Resources/Images/Ghost4Right.png");
+    TextureLoader::initTimeWarriorTextures();
     // PressurePlate Up
     EngineBase::loadTexture("Resources/Images/PressurePlateUp.png");
     // PressurePlate Down
