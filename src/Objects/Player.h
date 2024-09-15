@@ -29,6 +29,7 @@ private:
     float timePassed_;
     int index_;
     bool ghost_;
+    int ghostIndex_;
 };
 
 

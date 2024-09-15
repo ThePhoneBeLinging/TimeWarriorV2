@@ -10,6 +10,7 @@
 Player::Player(float x, float y) : DrawAble(x,y,0,50,50,Util::getTextureIndex(TimeWarriorTexture::PlayerDown)), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
 {
     ghost_ = false;
+    ghostIndex_ = 0;
     z_ = 10;
 }
 
@@ -58,8 +59,26 @@ void Player::resetPos(float x, float y)
     this->x(x);
     this->y(y);
     index_ = 0;
-    // TODO Set proper texture index
-    textureIndex_ = 1;
+    ghostIndex_++;
+
+    switch (ghostIndex_)
+    {
+    case 1:
+        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost1Down));
+        break;
+    case 2:
+        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost2Down));
+        break;
+    case 3:
+        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost3Down));
+        break;
+    case 4:
+        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost4Down));
+        break;
+    default:
+        break;
+    }
+
     ghost_ = true;
     timePassed_ = 0;
     speed_.xSpeed(0);
