@@ -22,6 +22,8 @@ add_executable(TimeWarriorV2
         Texture/TextureLoader.h
         RoomCreator.cpp
         RoomCreator.h
+        Objects/Wall.cpp
+        Objects/Wall.h
 )
 
 target_link_libraries(TimeWarriorV2 PUBLIC
