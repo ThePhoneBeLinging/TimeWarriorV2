@@ -52,7 +52,6 @@ void Player::update(float deltaTime)
             y(positions_[index_]->y_);
             if (x_ == oldX && y_ == oldY && (x_ != positions_[index_]->x_ || y_ != positions_[index_]->y_))
             {
-                //TODO Negate
                 timePassed_ -= deltaTime;
                 break;
             }
