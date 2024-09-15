@@ -12,7 +12,7 @@ void RoomCreator::setUpRoom(int roomNumber)
     roomNumber_ = roomNumber;
     pressurePlates_.clear();
     pressurePlates_.emplace_back(std::make_shared<PressurePlate>(100,100));
-    pressurePlates_[0]->setActivateAble(std::make_shared<SlidingDoor>(250,250));
+    pressurePlates_[0]->setActivateAble(std::make_shared<SlidingDoor>(250,250,250,300,0,50,0,-50));
 }
 
 void RoomCreator::update(float deltaTime)

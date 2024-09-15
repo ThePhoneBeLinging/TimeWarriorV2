@@ -15,13 +15,21 @@
 class SlidingDoor : public DrawAble, public IActivateAble
 {
 public:
-    SlidingDoor(float x, float y);
+    SlidingDoor(float x, float y, float targetX, float targetY, float activationXSpeed, float activationYSpeed, float nonActivationXSpeed, float nonActivationYSpeed);
     ~SlidingDoor() override;
     SpeedAble speed_;
     void activate() override;
     void deactivate() override;
 private:
     std::shared_ptr<Collidable> collidable_;
+    float originalX_;
+    float originalY_;
+    float targetX_;
+    float targetY_;
+    float activationXSpeed_;
+    float activationYSpeed_;
+    float nonActivationXSpeed_;
+    float nonActivationYSpeed_;
 };
 
 
