@@ -45,10 +45,18 @@ void Player::update(float deltaTime)
     else
     {
         // Load the position of the player
+        float oldX = x_;
+        float oldY = y_;
         while (positions_.size() > index_ && positions_[index_]->timePassedAtPoint_ < timePassed_)
         {
             x(positions_[index_]->x_);
             y(positions_[index_]->y_);
+            if (x_ == oldX && y_ == oldY && (x_ != positions_[index_]->x_ || y_ != positions_[index_]->y_))
+            {
+                //TODO Negate
+                timePassed_ -= deltaTime;
+                break;
+            }
             index_++;
         }
     }
