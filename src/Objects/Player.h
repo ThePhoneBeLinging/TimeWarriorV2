@@ -21,6 +21,7 @@ public:
     void y(float y) override;
     void update(float deltaTime);
     void resetPos(float x, float y);
+    void kill();
     SpeedAble speed_;
     Collidable collidable_;
 private:

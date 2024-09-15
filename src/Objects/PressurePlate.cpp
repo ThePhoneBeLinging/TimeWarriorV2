@@ -4,8 +4,10 @@
 
 #include "PressurePlate.h"
 
+#include "../Util.h"
 
-PressurePlate::PressurePlate(float x, float y) : DrawAble(x,y,0,0,0,2), collidable_(Collidable(this))
+
+PressurePlate::PressurePlate(float x, float y) : DrawAble(x,y,0,0,0,Util::getTextureIndex(TimeWarriorTexture::PressurePlateUp)), collidable_(Collidable(this))
 {
     this->height(50);
     this->width(50);

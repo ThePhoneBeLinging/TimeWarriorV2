@@ -24,8 +24,22 @@ void TimeWarriorV2::setUp()
 {
     // Amount of clones + player
     players_.resize(5);
-    EngineBase::loadTexture("Resources/Images/WKing.png");
+    // Player up
+    EngineBase::loadTexture("Resources/Images/player.png");
+    // Player Up
     EngineBase::loadTexture("Resources/Images/WBishop.png");
+    // Player Left
+    EngineBase::loadTexture("Resources/Images/WQueen.png");
+    // Player Right
+    EngineBase::loadTexture("Resources/Images/WKing.png");
+    // PressurePlate Up
+    EngineBase::loadTexture("Resources/Images/PressurePlateUp.png");
+    // PressurePlate Down
+    EngineBase::loadTexture("Resources/Images/WKnight.png");
+    // SlidingDoor
+    EngineBase::loadTexture("Resources/Images/SlidingDoor.png");
+
+
     players_[0] = std::make_shared<Player>(entranceX_,entranceY_);
     pressurePlates_.emplace_back(std::make_shared<PressurePlate>(100,100));
     pressurePlates_[0]->setActivateAble(std::make_shared<SlidingDoor>(250,250));

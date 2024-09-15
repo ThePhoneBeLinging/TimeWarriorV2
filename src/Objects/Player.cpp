@@ -5,10 +5,12 @@
 #include "Player.h"
 
 #include "../CollisionController.h"
+#include "../Util.h"
 
-Player::Player(float x, float y) : DrawAble(x,y,0,50,50,0), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
+Player::Player(float x, float y) : DrawAble(x,y,0,50,50,Util::getTextureIndex(TimeWarriorTexture::PlayerDown)), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
 {
     ghost_ = false;
+    z_ = 10;
 }
 
 void Player::x(float x)
@@ -62,4 +64,9 @@ void Player::resetPos(float x, float y)
     timePassed_ = 0;
     speed_.xSpeed(0);
     speed_.ySpeed(0);
+}
+
+void Player::kill()
+{
+
 }

@@ -7,9 +7,11 @@
 #include <memory>
 
 #include "../../CollisionController.h"
+#include "../../TimeWarriorTexture.h"
+#include "../../Util.h"
 
-SlidingDoor::SlidingDoor(float x, float y) : DrawAble(x,y,0,50,50,2)
-    ,IActivateAble(),speed_((SpeedAble(this))),collidable_(std::make_shared<Collidable>(this))
+SlidingDoor::SlidingDoor(float x, float y) : DrawAble(x,y,0,50,50,Util::getTextureIndex(TimeWarriorTexture::SlidingDoor))
+            ,IActivateAble(),speed_((SpeedAble(this))),collidable_(std::make_shared<Collidable>(this))
 {
     CollisionController::addSolidCollidable(collidable_);
 }
