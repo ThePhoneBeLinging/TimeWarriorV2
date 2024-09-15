@@ -11,7 +11,8 @@ void CollisionController::addSolidCollidable(const std::shared_ptr<Collidable>& 
 
 void CollisionController::removeSolidCollidable(const std::shared_ptr<Collidable>& collidable)
 {
-    solidCollidables_.erase(std::remove(solidCollidables_.begin(), solidCollidables_.end(), collidable), solidCollidables_.end());
+    solidCollidables_.erase(std::ranges::remove(solidCollidables_, collidable).begin(), solidCollidables_.end());
+
 }
 
 bool CollisionController::isCollidingWithSolid(Collidable* collidable)
