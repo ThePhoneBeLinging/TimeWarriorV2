@@ -13,6 +13,7 @@ public:
     static void initTimeWarriorTextures();
 private:
     static void initPlayerRelatedTextures();
+    static void initPressurePlateTextures();
 };
 
 

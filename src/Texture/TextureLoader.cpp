@@ -11,6 +11,10 @@
 void TextureLoader::initTimeWarriorTextures()
 {
     initPlayerRelatedTextures();
+    initPressurePlateTextures();
+
+    // SlidingDoor
+    EngineBase::loadTexture("Resources/Images/SlidingDoor.png");
 }
 
 void TextureLoader::initPlayerRelatedTextures()
@@ -25,4 +29,12 @@ void TextureLoader::initPlayerRelatedTextures()
             EngineBase::loadTexture(path);
         }
     }
+}
+
+void TextureLoader::initPressurePlateTextures()
+{
+    // PressurePlate Up
+    EngineBase::loadTexture("Resources/Images/PressurePlateUp.png");
+    // PressurePlate Down
+    EngineBase::loadTexture("Resources/Images/WKnight.png");
 }

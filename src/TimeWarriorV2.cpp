@@ -24,14 +24,10 @@ void TimeWarriorV2::update(float deltaTime)
 void TimeWarriorV2::setUp()
 {
     // Amount of clones + player
+    players_.clear();
     players_.resize(5);
+
     TextureLoader::initTimeWarriorTextures();
-    // PressurePlate Up
-    EngineBase::loadTexture("Resources/Images/PressurePlateUp.png");
-    // PressurePlate Down
-    EngineBase::loadTexture("Resources/Images/WKnight.png");
-    // SlidingDoor
-    EngineBase::loadTexture("Resources/Images/SlidingDoor.png");
 
 
     players_[0] = std::make_shared<Player>(entranceX_,entranceY_);
