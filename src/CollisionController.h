@@ -6,6 +6,7 @@
 #define COLLISIONCONTROLLER_H
 
 #include <vector>
+#include <memory>
 #include "EngineBase/Collidable.h"
 
 
