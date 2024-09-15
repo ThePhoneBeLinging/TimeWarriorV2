@@ -16,17 +16,10 @@ class TimeWarriorV2
 public:
     static void update(float deltaTime);
     static void setUp();
-    static void reset();
-
 private:
-    static void handleMovement();
-    static void handlePressurePlates();
-    static inline std::vector<std::shared_ptr<Player>> players_;
-    static inline std::vector<std::shared_ptr<PressurePlate>> pressurePlates_;
-    static inline float entranceX_ = 0;
-    static inline float entranceY_ = 0;
-    static inline int playerIndex_ = 0;
+    static void handleKeyBoard(float deltaTime);
     static inline bool enterPressed_ = false;
+
 };
 
 
