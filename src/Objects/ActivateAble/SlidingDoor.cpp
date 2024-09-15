@@ -6,8 +6,17 @@
 
 #include <memory>
 
-SlidingDoor::SlidingDoor(float x, float y) : DrawAble(x,y,0,50,50,2),IActivateAble(),speed_((SpeedAble(this)))
+#include "../../CollisionController.h"
+
+SlidingDoor::SlidingDoor(float x, float y) : DrawAble(x,y,0,50,50,2)
+    ,IActivateAble(),speed_((SpeedAble(this))),collidable_(std::make_shared<Collidable>(this))
 {
+    CollisionController::addSolidCollidable(collidable_);
+}
+
+SlidingDoor::~SlidingDoor()
+{
+    CollisionController::removeSolidCollidable(collidable_);
 }
 
 void SlidingDoor::activate()

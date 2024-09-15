@@ -17,6 +17,8 @@ class Player : public DrawAble
 {
 public:
     Player(float x, float y);
+    void x(float x) override;
+    void y(float y) override;
     void update(float deltaTime);
     void resetPos(float x, float y);
     SpeedAble speed_;

@@ -4,11 +4,31 @@
 
 #include "Player.h"
 
-Player::Player(float x, float y) : DrawAble(x,y,0,0,0,0), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
+#include "../CollisionController.h"
+
+Player::Player(float x, float y) : DrawAble(x,y,0,50,50,0), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
 {
-    this->height(50);
-    this->width(50);
     ghost_ = false;
+}
+
+void Player::x(float x)
+{
+    float oldX = x_;
+    DrawAble::x(x);
+    if (CollisionController::isCollidingWithSolid(&collidable_))
+    {
+        x_ = oldX;
+    }
+}
+
+void Player::y(float y)
+{
+    float oldY = y_;
+    DrawAble::y(y);
+    if (CollisionController::isCollidingWithSolid(&collidable_))
+    {
+        y_ = oldY;
+    }
 }
 
 void Player::update(float deltaTime)
@@ -17,7 +37,7 @@ void Player::update(float deltaTime)
     if (!ghost_)
     {
         // Save the position of the player
-        positions_.emplace_back(std::make_shared<SavedPosition>(x(), y(), timePassed_));
+        positions_.emplace_back(std::make_shared<SavedPosition>(x_, y_, timePassed_));
     }
     else
     {

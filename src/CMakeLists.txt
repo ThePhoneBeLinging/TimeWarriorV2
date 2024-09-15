@@ -14,6 +14,8 @@ add_executable(TimeWarriorV2
         Objects/ActivateAble/IActivateAble.h
         Objects/ActivateAble/SlidingDoor.cpp
         Objects/ActivateAble/SlidingDoor.h
+        CollisionController.cpp
+        CollisionController.h
 )
 
 target_link_libraries(TimeWarriorV2 PUBLIC
