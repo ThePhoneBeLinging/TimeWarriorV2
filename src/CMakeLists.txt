@@ -18,6 +18,12 @@ add_executable(TimeWarriorV2
         CollisionController.h
         TimeWarriorTexture.h
         Util.h
+        Texture/TextureLoader.cpp
+        Texture/TextureLoader.h
+        RoomCreator.cpp
+        RoomCreator.h
+        Objects/Wall.cpp
+        Objects/Wall.h
 )
 
 target_link_libraries(TimeWarriorV2 PUBLIC

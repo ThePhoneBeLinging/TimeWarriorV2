@@ -8,6 +8,8 @@
 enum class TimeWarriorTexture
 {
    // The 1 is the amount of textures that EngineBase loads as default
+   // EngineBase will eventually run on a matrix, and thus we only need to specify what primaryIndex of the
+   // texture to load
    PlayerDown = 1,
    PlayerUp,
    PlayerLeft,
@@ -30,7 +32,8 @@ enum class TimeWarriorTexture
    Ghost4Right,
    PressurePlateUp,
    PressurePlateDown,
-   SlidingDoor
+   SlidingDoor,
+   BrickWall
 };
 
 #endif //TIMEWARRIORTEXTURE_CUH

@@ -7,11 +7,10 @@
 #include "../CollisionController.h"
 #include "../Util.h"
 
-Player::Player(float x, float y) : DrawAble(x,y,0,50,50,Util::getTextureIndex(TimeWarriorTexture::PlayerDown)), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
+Player::Player(float x, float y) : DrawAble(x,y,15,50,50,Util::getTextureIndex(TimeWarriorTexture::PlayerRight)), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
 {
     ghost_ = false;
     ghostIndex_ = 0;
-    z_ = 10;
 }
 
 void Player::x(float x)
@@ -45,10 +44,17 @@ void Player::update(float deltaTime)
     else
     {
         // Load the position of the player
+        float oldX = x_;
+        float oldY = y_;
         while (positions_.size() > index_ && positions_[index_]->timePassedAtPoint_ < timePassed_)
         {
             x(positions_[index_]->x_);
             y(positions_[index_]->y_);
+            if (x_ == oldX && y_ == oldY && (x_ != positions_[index_]->x_ || y_ != positions_[index_]->y_))
+            {
+                timePassed_ -= deltaTime;
+                break;
+            }
             index_++;
         }
     }
@@ -64,16 +70,16 @@ void Player::resetPos(float x, float y)
     switch (ghostIndex_)
     {
     case 1:
-        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost1Down));
+        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost1Right));
         break;
     case 2:
-        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost2Down));
+        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost2Right));
         break;
     case 3:
-        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost3Down));
+        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost3Right));
         break;
     case 4:
-        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost4Down));
+        textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost4Right));
         break;
     default:
         break;
@@ -81,6 +87,7 @@ void Player::resetPos(float x, float y)
 
     ghost_ = true;
     timePassed_ = 0;
+    if (z_ != 14) z(14);
     speed_.xSpeed(0);
     speed_.ySpeed(0);
 }
