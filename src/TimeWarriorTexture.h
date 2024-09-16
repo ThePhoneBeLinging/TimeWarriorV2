@@ -32,7 +32,8 @@ enum class TimeWarriorTexture
    Ghost4Right,
    PressurePlateUp,
    PressurePlateDown,
-   SlidingDoor
+   SlidingDoor,
+   BrickWall
 };
 
 #endif //TIMEWARRIORTEXTURE_CUH

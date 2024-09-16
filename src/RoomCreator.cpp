@@ -3,8 +3,12 @@
 //
 
 #include "RoomCreator.h"
+
+#include "TimeWarriorTexture.h"
+#include "Util.h"
 #include "EngineBase/EngineBase.h"
 #include "EngineBase/KeyBoardKeys.h"
+#include "Objects/Wall.h"
 #include "Objects/ActivateAble/SlidingDoor.h"
 
 void RoomCreator::setUpRoom(int roomNumber)
@@ -13,6 +17,10 @@ void RoomCreator::setUpRoom(int roomNumber)
     pressurePlates_.clear();
     pressurePlates_.emplace_back(std::make_shared<PressurePlate>(100,100));
     pressurePlates_[0]->setActivateAble(std::make_shared<SlidingDoor>(250,250,250,300,0,50,0,-50));
+    walls_.emplace_back(std::make_shared<Wall>(0,0,1200,25,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+    walls_.emplace_back(std::make_shared<Wall>(0,0,25,800,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+    walls_.emplace_back(std::make_shared<Wall>(1175,0,25,800,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+    walls_.emplace_back(std::make_shared<Wall>(0,775,1200,25,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
 }
 
 void RoomCreator::update(float deltaTime)
