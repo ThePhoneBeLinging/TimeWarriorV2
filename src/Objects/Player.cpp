@@ -7,7 +7,7 @@
 #include "../CollisionController.h"
 #include "../Util.h"
 
-Player::Player(float x, float y) : DrawAble(x,y,15,50,50,Util::getTextureIndex(TimeWarriorTexture::PlayerRight)), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
+Player::Player(float x, float y) : DrawAble(x,y,15,40,40,Util::getTextureIndex(TimeWarriorTexture::PlayerRight)), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
 {
     ghost_ = false;
     ghostIndex_ = 0;
