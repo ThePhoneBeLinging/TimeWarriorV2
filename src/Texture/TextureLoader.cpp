@@ -27,7 +27,7 @@ void TextureLoader::initPlayerRelatedTextures()
     {
         for (const auto& suffix : suffixes)
         {
-            std::string path = "Resources/Images/" + prefix + suffix + ".png";
+            std::string path = "Resources/Images/Ghosts" + prefix + suffix + ".png";
             EngineBase::loadTexture(path);
         }
     }
