@@ -24,7 +24,10 @@ add_executable(TimeWarriorV2
         RoomCreator.h
         Objects/Wall.cpp
         Objects/Wall.h
+        TimeWarriorZValues.h
 )
+include_directories(Objects)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(TimeWarriorV2 PUBLIC
         Utility
