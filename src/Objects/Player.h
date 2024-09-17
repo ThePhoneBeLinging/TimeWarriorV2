@@ -17,6 +17,7 @@ class Player : public DrawAble
 {
 public:
     Player(float x, float y);
+    ~Player() override = default;
     void x(float x) override;
     void y(float y) override;
     void update(float deltaTime);

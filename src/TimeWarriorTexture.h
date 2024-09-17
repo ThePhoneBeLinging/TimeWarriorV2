@@ -33,7 +33,8 @@ enum class TimeWarriorTexture
    PressurePlateUp,
    PressurePlateDown,
    SlidingDoor,
-   BrickWall
+   BrickWall,
+   Invisible
 };
 
 #endif //TIMEWARRIORTEXTURE_CUH
