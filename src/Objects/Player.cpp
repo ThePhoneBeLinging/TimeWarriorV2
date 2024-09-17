@@ -4,10 +4,11 @@
 
 #include "Player.h"
 
-#include "../CollisionController.h"
-#include "../Util.h"
+#include "CollisionController.h"
+#include "Util.h"
+#include "TimeWarriorZValues.h"
 
-Player::Player(float x, float y) : DrawAble(x,y,15,40,40,Util::getTextureIndex(TimeWarriorTexture::PlayerRight)), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
+Player::Player(float x, float y) : DrawAble(x,y,(int)TimeWarriorZValues::PLAYER,40,40,Util::getTextureIndex(TimeWarriorTexture::PlayerRight)), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
 {
     ghost_ = false;
     ghostIndex_ = 0;
@@ -71,15 +72,19 @@ void Player::resetPos(float x, float y)
     {
     case 1:
         textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost1Right));
+        z_ = (int)TimeWarriorZValues::GHOST1;
         break;
     case 2:
         textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost2Right));
+            z_ = (int)TimeWarriorZValues::GHOST2;
         break;
     case 3:
         textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost3Right));
+            z_ = (int)TimeWarriorZValues::GHOST3;
         break;
     case 4:
         textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost4Right));
+            z_ = (int)TimeWarriorZValues::GHOST4;
         break;
     default:
         break;

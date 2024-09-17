@@ -4,10 +4,11 @@
 
 #include "Wall.h"
 
-#include "../CollisionController.h"
+#include "CollisionController.h"
+#include "TimeWarriorZValues.h"
 
 Wall::Wall(float x, float y, int width, int height, int textureIndex)
-: DrawAble(x,y,1000,width,height,textureIndex), collidable_(std::make_shared<Collidable>(this))
+: DrawAble(x,y,(int) TimeWarriorZValues::WALL,width,height,textureIndex), collidable_(std::make_shared<Collidable>(this))
 {
     CollisionController::addSolidCollidable(collidable_);
 }

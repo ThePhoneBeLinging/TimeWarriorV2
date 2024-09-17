@@ -7,13 +7,14 @@
 #include <memory>
 #include <vector>
 
-#include "../../CollisionController.h"
-#include "../../TimeWarriorTexture.h"
-#include "../../Util.h"
+#include "CollisionController.h"
+#include "TimeWarriorTexture.h"
+#include "TimeWarriorZValues.h"
+#include "Util.h"
 
 SlidingDoor::SlidingDoor(float x, float y, float targetX, float targetY, float activationXSpeed, float activationYSpeed,
-    float nonActivationXSpeed, float nonActivationYSpeed) : DrawAble(x, y, 1001, 50, 50,
-        Util::getTextureIndex(TimeWarriorTexture::SlidingDoor)), speed_(SpeedAble(this)),
+    float nonActivationXSpeed, float nonActivationYSpeed) : DrawAble(x, y, (int)TimeWarriorZValues::SLIDINGDOOR, 50, 50,
+                                                                     Util::getTextureIndex(TimeWarriorTexture::SlidingDoor)), speed_(SpeedAble(this)),
     collidable_(std::make_shared<Collidable>(this)), originalX_(x), originalY_(y),
     targetX_(targetX), targetY_(targetY), activationXSpeed_(activationXSpeed), activationYSpeed_(activationYSpeed), nonActivationXSpeed_(nonActivationXSpeed),
     nonActivationYSpeed_(nonActivationYSpeed)
