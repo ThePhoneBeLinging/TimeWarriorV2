@@ -15,8 +15,10 @@ void TextureLoader::initTimeWarriorTextures()
 
     // SlidingDoor
     EngineBase::loadTexture("Resources/Images/SlidingDoor.png");
-
+    // Wall
     EngineBase::loadTexture("Resources/Images/Wall.png");
+
+    EngineBase::loadTexture("INVISIBLETEXTURE");
 }
 
 void TextureLoader::initPlayerRelatedTextures()

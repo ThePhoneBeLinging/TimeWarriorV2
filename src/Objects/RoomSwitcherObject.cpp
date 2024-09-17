@@ -4,9 +4,10 @@
 
 #include "RoomSwitcherObject.h"
 #include "TimeWarriorZValues.h"
+#include "TimeWarriorTexture.h"
 
 RoomSwitcherObject::RoomSwitcherObject(float x, float y, int width, int height, int targetRoom)
-: DrawAble(x,y,(int) TimeWarriorZValues::HIDDEN,width,height), collidable_(std::make_shared<Collidable>(this)), targetRoom_(targetRoom)
+: DrawAble(x,y,(int) TimeWarriorZValues::HIDDEN,width,height,(int) TimeWarriorTexture::Invisible), collidable_(std::make_shared<Collidable>(this)), targetRoom_(targetRoom)
 {
 }
 
