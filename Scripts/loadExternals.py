@@ -32,7 +32,10 @@ def main():
 
     # Clone or pull each repository
     for repo_url in repo_urls:
-        clone_or_pull(repo_url, "dependencies")
+        path = "dependencies"
+        if (os.getcwd().endswith("Scripts")):
+            path = "../dependencies"
+        clone_or_pull(repo_url, path)
 
 if __name__ == '__main__':
     main()
