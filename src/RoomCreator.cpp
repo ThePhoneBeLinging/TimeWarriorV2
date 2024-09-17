@@ -36,8 +36,8 @@ void RoomCreator::setUpRoom(int roomNumber)
             walls_.emplace_back(std::make_shared<Wall>(0,roomHeight - wallWidth,roomWidth,wallWidth,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
 
             // Middle walls
-            walls_.emplace_back(std::make_shared<Wall>(250,0,wallWidth,(roomHeight - (roomHeight - 250)),Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
-            walls_.emplace_back(std::make_shared<Wall>(250,300,wallWidth,(roomHeight - (roomHeight - 500)),Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+            walls_.emplace_back(std::make_shared<Wall>(250,0,wallWidth,250,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+            walls_.emplace_back(std::make_shared<Wall>(250,300,wallWidth,roomHeight - 300,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
             break;
         default:
             throw std::invalid_argument("Room number not found");
