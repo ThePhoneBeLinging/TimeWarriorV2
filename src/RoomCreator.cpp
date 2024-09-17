@@ -13,6 +13,12 @@
 
 void RoomCreator::setUpRoom(int roomNumber)
 {
+    int roomWidth = 1200;
+    int roomHeight = 800;
+    int wallWidth = 50;
+
+    entranceX_ = 150;
+    entranceY_ = 150;
     pressurePlates_.clear();
     walls_.clear();
     roomNumber_ = roomNumber;
@@ -24,13 +30,14 @@ void RoomCreator::setUpRoom(int roomNumber)
             pressurePlates_[0]->setActivateAble(std::make_shared<SlidingDoor>(250,250,250,300,0,50,0,-50));
 
             // Walls around the room
-            walls_.emplace_back(std::make_shared<Wall>(0,0,1200,25,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
-            walls_.emplace_back(std::make_shared<Wall>(0,0,25,800,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
-            walls_.emplace_back(std::make_shared<Wall>(1175,0,25,800,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
-            walls_.emplace_back(std::make_shared<Wall>(0,775,1200,25,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
-            // Top middle
-            walls_.emplace_back(std::make_shared<Wall>(250,0,50,250,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
-            walls_.emplace_back(std::make_shared<Wall>(250,300,50,500,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+            walls_.emplace_back(std::make_shared<Wall>(0,0,roomWidth,wallWidth,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+            walls_.emplace_back(std::make_shared<Wall>(0,0,wallWidth,roomHeight,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+            walls_.emplace_back(std::make_shared<Wall>(roomWidth - wallWidth,0,wallWidth,roomHeight,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+            walls_.emplace_back(std::make_shared<Wall>(0,roomHeight - wallWidth,roomWidth,wallWidth,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+
+            // Middle walls
+            walls_.emplace_back(std::make_shared<Wall>(250,0,wallWidth,(roomHeight - (roomHeight - 250)),Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+            walls_.emplace_back(std::make_shared<Wall>(250,300,wallWidth,(roomHeight - (roomHeight - 500)),Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
             break;
         default:
             throw std::invalid_argument("Room number not found");
