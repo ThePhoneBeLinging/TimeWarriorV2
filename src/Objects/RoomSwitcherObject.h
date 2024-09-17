@@ -14,8 +14,10 @@ class RoomSwitcherObject : public DrawAble
 public:
     RoomSwitcherObject(float x, float y, int width, int height, int targetRoom);
     std::shared_ptr<Collidable> getCollidable();
+    [[nodiscard]] int getTargetRoom() const;
 private:
     std::shared_ptr<Collidable> collidable_;
+    int targetRoom_;
 };
 
 
