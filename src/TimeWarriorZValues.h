@@ -7,6 +7,7 @@
 
 enum class TimeWarriorZValues
 {
+    HIDDEN = -1,
     BACKGROUND = 0,
     PRESSUREPLATE,
     WALL,
