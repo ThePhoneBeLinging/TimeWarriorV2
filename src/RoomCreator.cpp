@@ -5,7 +5,6 @@
 #include "RoomCreator.h"
 
 #include "TimeWarriorTexture.h"
-#include "Util.h"
 #include "EngineBase/EngineBase.h"
 #include "EngineBase/KeyBoardKeys.h"
 #include "Objects/Wall.h"
@@ -25,13 +24,13 @@ void RoomCreator::setUpRoom(int roomNumber)
             pressurePlates_[0]->setActivateAble(std::make_shared<SlidingDoor>(250,250,250,300,0,50,0,-50));
 
             // Walls around the room
-            walls_.emplace_back(std::make_shared<Wall>(0,0,1200,25,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
-            walls_.emplace_back(std::make_shared<Wall>(0,0,25,800,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
-            walls_.emplace_back(std::make_shared<Wall>(1175,0,25,800,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
-            walls_.emplace_back(std::make_shared<Wall>(0,775,1200,25,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+            walls_.emplace_back(std::make_shared<Wall>(0,0,1200,25,(int)TimeWarriorTexture::BrickWall));
+            walls_.emplace_back(std::make_shared<Wall>(0,0,25,800,(int)TimeWarriorTexture::BrickWall));
+            walls_.emplace_back(std::make_shared<Wall>(1175,0,25,800,(int)TimeWarriorTexture::BrickWall));
+            walls_.emplace_back(std::make_shared<Wall>(0,775,1200,25,(int)TimeWarriorTexture::BrickWall));
             // Top middle
-            walls_.emplace_back(std::make_shared<Wall>(250,0,50,250,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
-            walls_.emplace_back(std::make_shared<Wall>(250,300,50,500,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+            walls_.emplace_back(std::make_shared<Wall>(250,0,50,250,(int)TimeWarriorTexture::BrickWall));
+            walls_.emplace_back(std::make_shared<Wall>(250,300,50,500,(int)TimeWarriorTexture::BrickWall));
 
             roomSwitchers_.push_back(std::make_shared<RoomSwitcherObject>(500,300,50,50,2));
             break;

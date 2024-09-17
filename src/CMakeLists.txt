@@ -17,7 +17,6 @@ add_executable(TimeWarriorV2
         CollisionController.cpp
         CollisionController.h
         TimeWarriorTexture.h
-        Util.h
         Texture/TextureLoader.cpp
         Texture/TextureLoader.h
         RoomCreator.cpp
