@@ -92,7 +92,6 @@ void Player::resetPos(float x, float y)
 
     ghost_ = true;
     timePassed_ = 0;
-    if (z_ != 14) z(14);
     speed_.xSpeed(0);
     speed_.ySpeed(0);
 }
