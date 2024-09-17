@@ -12,6 +12,12 @@
 
 void RoomCreator::setUpRoom(int roomNumber)
 {
+    int roomWidth = 1200;
+    int roomHeight = 800;
+    int wallWidth = 50;
+
+    entranceX_ = 150;
+    entranceY_ = 150;
     pressurePlates_.clear();
     walls_.clear();
     roomSwitchers_.clear();
@@ -24,6 +30,7 @@ void RoomCreator::setUpRoom(int roomNumber)
             pressurePlates_[0]->setActivateAble(std::make_shared<SlidingDoor>(250,250,250,300,0,50,0,-50));
 
             // Walls around the room
+
             walls_.emplace_back(std::make_shared<Wall>(0,0,1200,25,(int)TimeWarriorTexture::BrickWall));
             walls_.emplace_back(std::make_shared<Wall>(0,0,25,800,(int)TimeWarriorTexture::BrickWall));
             walls_.emplace_back(std::make_shared<Wall>(1175,0,25,800,(int)TimeWarriorTexture::BrickWall));
