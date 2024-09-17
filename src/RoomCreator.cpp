@@ -15,6 +15,7 @@ void RoomCreator::setUpRoom(int roomNumber)
 {
     pressurePlates_.clear();
     walls_.clear();
+    roomSwitchers_.clear();
     roomNumber_ = roomNumber;
     switch (roomNumber_)
     {
@@ -31,6 +32,10 @@ void RoomCreator::setUpRoom(int roomNumber)
             // Top middle
             walls_.emplace_back(std::make_shared<Wall>(250,0,50,250,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
             walls_.emplace_back(std::make_shared<Wall>(250,300,50,500,Util::getTextureIndex(TimeWarriorTexture::BrickWall)));
+
+            roomSwitchers_.push_back(std::make_shared<RoomSwitcherObject>(500,300,50,50,2));
+            break;
+        case 2:
             break;
         default:
             throw std::invalid_argument("Room number not found");
@@ -42,6 +47,7 @@ void RoomCreator::update(float deltaTime)
 {
     handleMovement();
     handlePressurePlates();
+    handleRoomSwitchers();
     for (const auto& player : players_)
     {
         if (player != nullptr)
@@ -56,8 +62,8 @@ void RoomCreator::enterRoom(int roomNumber)
     setUpRoom(roomNumber);
     players_.clear();
     players_.resize(5);
-
-    players_[0] = std::make_shared<Player>(entranceX_,entranceY_);
+    playerIndex_ = 0;
+    players_[playerIndex_] = std::make_shared<Player>(entranceX_,entranceY_);
 }
 
 void RoomCreator::resetRoom()
@@ -117,6 +123,22 @@ void RoomCreator::handlePressurePlates()
         if (!activated)
         {
             pressurePlate->notTrigger();
+        }
+    }
+}
+
+void RoomCreator::handleRoomSwitchers()
+{
+    for (const auto& roomSwitcher : roomSwitchers_)
+    {
+        for (const auto& player : players_)
+        {
+            if (player == nullptr) continue;
+            if (player->collidable_.isColliding(roomSwitcher->getCollidable().get()))
+            {
+                enterRoom(roomSwitcher->getTargetRoom());
+                return;
+            }
         }
     }
 }
