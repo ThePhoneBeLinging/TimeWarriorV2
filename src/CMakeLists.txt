@@ -17,14 +17,20 @@ add_executable(TimeWarriorV2
         CollisionController.cpp
         CollisionController.h
         TimeWarriorTexture.h
-        Util.h
         Texture/TextureLoader.cpp
         Texture/TextureLoader.h
         RoomCreator.cpp
         RoomCreator.h
         Objects/Wall.cpp
         Objects/Wall.h
+        TimeWarriorZValues.h
+        Objects/RoomSwitcherObject.cpp
+        Objects/RoomSwitcherObject.h
+        Objects/LongWall.cpp
+        Objects/LongWall.h
 )
+include_directories(Objects)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(TimeWarriorV2 PUBLIC
         Utility

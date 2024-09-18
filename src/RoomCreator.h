@@ -7,6 +7,8 @@
 #include "Objects/Player.h"
 #include "Objects/PressurePlate.h"
 #include "Objects/Wall.h"
+#include "Objects/RoomSwitcherObject.h"
+#include "Objects/LongWall.h"
 
 
 class RoomCreator
@@ -19,9 +21,12 @@ public:
 private:
     static void handleMovement();
     static void handlePressurePlates();
+    static void handleRoomSwitchers();
     static inline std::vector<std::shared_ptr<Player>> players_;
     static inline std::vector<std::shared_ptr<PressurePlate>> pressurePlates_;
     static inline std::vector<std::shared_ptr<Wall>> walls_;
+    static inline std::vector<std::shared_ptr<LongWall>> longWalls_;
+    static inline std::vector<std::shared_ptr<RoomSwitcherObject>> roomSwitchers_;
     static inline float entranceX_ = 50;
     static inline float entranceY_ = 50;
     static inline int playerIndex_ = 0;
