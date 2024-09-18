@@ -14,7 +14,7 @@ class Wall : public DrawAble
 {
 public:
     Wall(float x, float y, int width, int height, int textureIndex);
-    ~Wall();
+    ~Wall() override;
     std::shared_ptr<Collidable> collidable_;
 };
 
