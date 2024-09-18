@@ -55,6 +55,54 @@ void Player::update(float deltaTime)
                 timePassed_ -= deltaTime;
                 break;
             }
+            switch(ghostIndex_) {
+                case 1:
+                if (x_ < oldX) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost1Left));
+                } else if (x_ > oldX) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost1Right));
+                } else if (y_ < oldY) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost1Up));
+                } else if (y_ > oldY) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost1Down));
+                }
+                break;
+            case 2:
+                if (x_ < oldX) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost2Left));
+                } else if (x_ > oldX) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost2Right));
+                } else if (y_ < oldY) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost2Up));
+                } else if (y_ > oldY) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost2Down));
+                }
+                break;
+            case 3:
+                if (x_ < oldX) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost3Left));
+                } else if (x_ > oldX) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost3Right));
+                } else if (y_ < oldY) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost3Up));
+                } else if (y_ > oldY) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost3Down));
+                }
+                break;
+            case 4:
+                if (x_ < oldX) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost4Left));
+                } else if (x_ > oldX) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost4Right));
+                } else if (y_ < oldY) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost4Up));
+                } else if (y_ > oldY) {
+                    textureIndex(Util::getTextureIndex(TimeWarriorTexture::Ghost4Down));
+                }
+                break;
+            default:
+                break;
+            }
             index_++;
         }
     }
