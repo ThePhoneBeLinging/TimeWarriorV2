@@ -31,10 +31,10 @@ void RoomCreator::setUpRoom(int roomNumber)
 
             // longWalls around the room
 
-            longWalls_.emplace_back(std::make_shared<LongWall>(0, 0, 1200, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
-            longWalls_.emplace_back(std::make_shared<LongWall>(0, 0, wallWidth, 800, (int)TimeWarriorTexture::BrickWall, wallWidth));
-            longWalls_.emplace_back(std::make_shared<LongWall>(1175, 0, wallWidth, 800, (int)TimeWarriorTexture::BrickWall, wallWidth));
-            longWalls_.emplace_back(std::make_shared<LongWall>(0, 775, 1200, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            longWalls_.emplace_back(std::make_shared<LongWall>(0, 0, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            longWalls_.emplace_back(std::make_shared<LongWall>(0, 0, wallWidth, roomHeight, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            longWalls_.emplace_back(std::make_shared<LongWall>(roomWidth - wallWidth, 0, wallWidth, roomHeight, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            longWalls_.emplace_back(std::make_shared<LongWall>(0, roomHeight - wallWidth, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
             // Top middle
             longWalls_.emplace_back(std::make_shared<LongWall>(250, 0, wallWidth, 250, (int)TimeWarriorTexture::BrickWall, wallWidth));
             longWalls_.emplace_back(std::make_shared<LongWall>(250, 300, wallWidth, 500, (int)TimeWarriorTexture::BrickWall, wallWidth));
