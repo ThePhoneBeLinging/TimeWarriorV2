@@ -75,18 +75,22 @@ void RoomCreator::handleMovement()
     if (EngineBase::keyPressed(ENGINEBASE_KEY_W))
     {
         players_[playerIndex_]->speed_.ySpeed(-100);
+        players_[playerIndex_]->textureIndex((int) TimeWarriorTexture::PlayerUp);
     }
     if (EngineBase::keyPressed(ENGINEBASE_KEY_S))
     {
         players_[playerIndex_]->speed_.ySpeed(100);
+        players_[playerIndex_]->textureIndex((int) TimeWarriorTexture::PlayerDown);
     }
     if (EngineBase::keyPressed(ENGINEBASE_KEY_A))
     {
         players_[playerIndex_]->speed_.xSpeed(-100);
+        players_[playerIndex_]->textureIndex((int) TimeWarriorTexture::PlayerLeft);
     }
     if (EngineBase::keyPressed(ENGINEBASE_KEY_D))
     {
         players_[playerIndex_]->speed_.xSpeed(100);
+        players_[playerIndex_]->textureIndex((int) TimeWarriorTexture::PlayerRight);
     }
 }
 
