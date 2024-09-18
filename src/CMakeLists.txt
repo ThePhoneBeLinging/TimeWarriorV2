@@ -26,6 +26,8 @@ add_executable(TimeWarriorV2
         TimeWarriorZValues.h
         Objects/RoomSwitcherObject.cpp
         Objects/RoomSwitcherObject.h
+        Objects/LongWall.cpp
+        Objects/LongWall.h
 )
 include_directories(Objects)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
