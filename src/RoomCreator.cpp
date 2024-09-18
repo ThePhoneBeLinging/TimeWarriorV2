@@ -14,7 +14,7 @@ void RoomCreator::setUpRoom(int roomNumber)
 {
     int roomWidth = 1200;
     int roomHeight = 800;
-    int longWallWidth = 50;
+    int wallWidth = 50;
 
     entranceX_ = 150;
     entranceY_ = 150;
@@ -31,13 +31,13 @@ void RoomCreator::setUpRoom(int roomNumber)
 
             // longWalls around the room
 
-            longWalls_.emplace_back(std::make_shared<LongWall>(0,0,1200,25,(int)TimeWarriorTexture::BrickWall,longWallWidth));
-            longWalls_.emplace_back(std::make_shared<LongWall>(0,0,25,800,(int)TimeWarriorTexture::BrickWall,longWallWidth));
-            longWalls_.emplace_back(std::make_shared<LongWall>(1175,0,25,800,(int)TimeWarriorTexture::BrickWall,longWallWidth));
-            longWalls_.emplace_back(std::make_shared<LongWall>(0,775,1200,25,(int)TimeWarriorTexture::BrickWall,longWallWidth));
+            longWalls_.emplace_back(std::make_shared<LongWall>(0, 0, 1200, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            longWalls_.emplace_back(std::make_shared<LongWall>(0, 0, wallWidth, 800, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            longWalls_.emplace_back(std::make_shared<LongWall>(1175, 0, wallWidth, 800, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            longWalls_.emplace_back(std::make_shared<LongWall>(0, 775, 1200, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
             // Top middle
-            longWalls_.emplace_back(std::make_shared<LongWall>(250,0,50,250,(int)TimeWarriorTexture::BrickWall,longWallWidth));
-            longWalls_.emplace_back(std::make_shared<LongWall>(250,300,50,500,(int)TimeWarriorTexture::BrickWall,longWallWidth));
+            longWalls_.emplace_back(std::make_shared<LongWall>(250, 0, wallWidth, 250, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            longWalls_.emplace_back(std::make_shared<LongWall>(250, 300, wallWidth, 500, (int)TimeWarriorTexture::BrickWall, wallWidth));
 
             roomSwitchers_.push_back(std::make_shared<RoomSwitcherObject>(500,300,50,50,2));
             break;
