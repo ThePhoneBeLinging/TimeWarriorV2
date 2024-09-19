@@ -8,7 +8,7 @@
 #include "TimeWarriorZValues.h"
 #include "TimeWarriorTexture.h"
 
-Player::Player(float x, float y) : DrawAble(x,y,(int)TimeWarriorZValues::PLAYER,40,40,(int)TimeWarriorTexture::PlayerRight), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
+Player::Player(float x, float y) : DrawAble(x,y,(int)TimeWarriorZValues::PLAYER,32,32,(int)TimeWarriorTexture::PlayerRight), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
 {
     ghost_ = false;
     ghostIndex_ = 0;
