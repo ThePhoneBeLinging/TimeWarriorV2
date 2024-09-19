@@ -11,7 +11,7 @@
 #include "EngineBase/DrawAble.h"
 
 
-class PressurePlate : DrawAble
+class PressurePlate : public DrawAble
 {
 public:
     PressurePlate(float x, float y);

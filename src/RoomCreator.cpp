@@ -27,7 +27,8 @@ void RoomCreator::setUpRoom(int roomNumber)
         case 1:
 
             pressurePlates_.emplace_back(std::make_shared<PressurePlate>(100,100));
-            pressurePlates_[0]->setActivateAble(std::make_shared<SlidingDoor>(250,250,250,300,0,50,0,-50));
+            auto door1 = std::make_shared<SlidingDoor>(250,250,250,300,0,50,0,-50);
+            pressurePlates_[0]->setActivateAble(door1);
 
             // longWalls around the room
 
@@ -45,6 +46,10 @@ void RoomCreator::setUpRoom(int roomNumber)
             break;
         default:
             throw std::invalid_argument("Room number not found");
+    }
+    for (const auto& pressurePlate : pressurePlates_)
+    {
+        EngineBase::addDrawAble(std::weak_ptr(pressurePlate));
     }
 
 }
