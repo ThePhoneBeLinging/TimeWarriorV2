@@ -11,7 +11,7 @@
 Player::Player(float x, float y) : DrawAble(x,y,(int)TimeWarriorZValues::PLAYER,40,40,(int)TimeWarriorTexture::PlayerRight), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
 {
     ghost_ = false;
-    ghostIndex_ = 0;
+    textureIndexDelta_ = 0;
 }
 
 void Player::x(float x)
@@ -56,34 +56,18 @@ void Player::update(float deltaTime)
                 timePassed_ -= deltaTime;
                 break;
             }
+            textureIndex(textureIndex_ - textureIndexDelta_);
 
-            enum class Direction { Left, Right, Up, Down };
-            Direction direction;
             if (x_ < oldX) {
-                direction = Direction::Left;
+                textureIndexDelta_ = 2;
             } else if (x_ > oldX) {
-                direction = Direction::Right;
+                textureIndexDelta_ = 3;
             } else if (y_ < oldY) {
-                direction = Direction::Up;
+                textureIndexDelta_ = 1;
             } else if (y_ > oldY) {
-                direction = Direction::Down;
+                textureIndexDelta_ = 0;
             }
-
-            int baseTextureIndex = (int)TimeWarriorTexture::Ghost1Right + (ghostIndex_ - 1) * 4;
-            switch (direction) {
-                case Direction::Left:
-                    textureIndex(baseTextureIndex - 1);
-                break;
-                case Direction::Right:
-                    textureIndex(baseTextureIndex);
-                break;
-                case Direction::Up:
-                    textureIndex(baseTextureIndex + 1);
-                break;
-                case Direction::Down:
-                    textureIndex(baseTextureIndex + 2);
-                break;
-            }
+            textureIndex(textureIndex_ + textureIndexDelta_);
 
             index_++;
         }
@@ -95,30 +79,7 @@ void Player::resetPos(float x, float y)
     this->x(x);
     this->y(y);
     index_ = 0;
-    ghostIndex_++;
-
-    switch (ghostIndex_)
-    {
-    case 1:
-        textureIndex((int)TimeWarriorTexture::Ghost1Right);
-        z_ = (int)TimeWarriorZValues::GHOST1;
-        break;
-    case 2:
-        textureIndex((int)TimeWarriorTexture::Ghost2Right);
-            z_ = (int)TimeWarriorZValues::GHOST2;
-        break;
-    case 3:
-        textureIndex((int)TimeWarriorTexture::Ghost3Right);
-            z_ = (int)TimeWarriorZValues::GHOST3;
-        break;
-    case 4:
-        textureIndex((int)TimeWarriorTexture::Ghost4Right);
-            z_ = (int)TimeWarriorZValues::GHOST4;
-        break;
-    default:
-        break;
-    }
-
+    textureIndex(textureIndex_ + 4);
     ghost_ = true;
     timePassed_ = 0;
     speed_.xSpeed(0);

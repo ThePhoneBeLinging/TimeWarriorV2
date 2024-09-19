@@ -30,7 +30,7 @@ private:
     float timePassed_;
     int index_;
     bool ghost_;
-    int ghostIndex_;
+    int textureIndexDelta_;
 };
 
 
