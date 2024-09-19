@@ -70,6 +70,7 @@ void RoomCreator::enterRoom(int roomNumber)
     players_.resize(5);
     playerIndex_ = 0;
     players_[playerIndex_] = std::make_shared<Player>(entranceX_,entranceY_);
+    EngineBase::addDrawAble(std::weak_ptr(players_[playerIndex_]));
 }
 
 void RoomCreator::resetRoom()
@@ -91,23 +92,23 @@ void RoomCreator::handleMovement()
 {
 
     // Player movement
-    players_[playerIndex_]->speed_.xSpeed(0);
-    players_[playerIndex_]->speed_.ySpeed(0);
+    players_[playerIndex_]->speed_->xSpeed(0);
+    players_[playerIndex_]->speed_->ySpeed(0);
     if (EngineBase::keyPressed(ENGINEBASE_KEY_W))
     {
-        players_[playerIndex_]->speed_.ySpeed(-100);
+        players_[playerIndex_]->speed_->ySpeed(-100);
     }
     if (EngineBase::keyPressed(ENGINEBASE_KEY_S))
     {
-        players_[playerIndex_]->speed_.ySpeed(100);
+        players_[playerIndex_]->speed_->ySpeed(100);
     }
     if (EngineBase::keyPressed(ENGINEBASE_KEY_A))
     {
-        players_[playerIndex_]->speed_.xSpeed(-100);
+        players_[playerIndex_]->speed_->xSpeed(-100);
     }
     if (EngineBase::keyPressed(ENGINEBASE_KEY_D))
     {
-        players_[playerIndex_]->speed_.xSpeed(100);
+        players_[playerIndex_]->speed_->xSpeed(100);
     }
 }
 
@@ -119,7 +120,7 @@ void RoomCreator::handlePressurePlates()
         for (const auto& player : players_)
         {
             if (player == nullptr) continue;
-            if (player->collidable_.isColliding(&pressurePlate->collidable_))
+            if (player->collidable_->isColliding(&pressurePlate->collidable_))
             {
                 pressurePlate->trigger();
                 activated = true;
@@ -140,7 +141,7 @@ void RoomCreator::handleRoomSwitchers()
         for (const auto& player : players_)
         {
             if (player == nullptr) continue;
-            if (player->collidable_.isColliding(roomSwitcher->getCollidable().get()))
+            if (player->collidable_->isColliding(roomSwitcher->getCollidable().get()))
             {
                 enterRoom(roomSwitcher->getTargetRoom());
                 return;
