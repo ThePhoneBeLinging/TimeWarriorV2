@@ -25,10 +25,11 @@ void RoomCreator::setUpRoom(int roomNumber)
     switch (roomNumber_)
     {
         case 1:
-
+        {
             pressurePlates_.emplace_back(std::make_shared<PressurePlate>(100,100));
             auto door1 = std::make_shared<SlidingDoor>(250,250,250,300,0,50,0,-50);
             pressurePlates_[0]->setActivateAble(door1);
+                EngineBase::addDrawAble(std::weak_ptr(door1));
 
             // longWalls around the room
 
@@ -42,6 +43,7 @@ void RoomCreator::setUpRoom(int roomNumber)
 
             roomSwitchers_.push_back(std::make_shared<RoomSwitcherObject>(500,300,50,50,2));
             break;
+        }
         case 2:
             break;
         default:
@@ -91,6 +93,7 @@ void RoomCreator::resetRoom()
         playerIndex_ = -1;
     }
     players_[++playerIndex_] = std::make_shared<Player>(entranceX_,entranceY_);
+    EngineBase::addDrawAble(std::weak_ptr(players_[playerIndex_]));
 }
 
 void RoomCreator::handleMovement()

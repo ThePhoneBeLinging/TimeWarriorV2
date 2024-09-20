@@ -17,7 +17,7 @@ class SlidingDoor : public DrawAble, public IActivateAble
 public:
     SlidingDoor(float x, float y, float targetX, float targetY, float activationXSpeed, float activationYSpeed, float nonActivationXSpeed, float nonActivationYSpeed);
     ~SlidingDoor() override;
-    SpeedAble speed_;
+    std::shared_ptr<SpeedAble> speed_;
     void activate() override;
     void deactivate() override;
 private:
