@@ -29,7 +29,7 @@ void RoomCreator::setUpRoom(int roomNumber)
             pressurePlates_.emplace_back(std::make_shared<PressurePlate>(100,100));
             auto door1 = std::make_shared<SlidingDoor>(250,250,250,300,0,50,0,-50);
             pressurePlates_[0]->setActivateAble(door1);
-                EngineBase::addDrawAble(std::weak_ptr(door1));
+            EngineBase::addDrawAble(std::weak_ptr(door1));
 
             // longWalls around the room
 
@@ -39,7 +39,7 @@ void RoomCreator::setUpRoom(int roomNumber)
             longWalls_.emplace_back(std::make_shared<LongWall>(0, roomHeight - wallWidth, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
             // Top middle
             longWalls_.emplace_back(std::make_shared<LongWall>(250, 0, wallWidth, 250, (int)TimeWarriorTexture::BrickWall, wallWidth));
-            longWalls_.emplace_back(std::make_shared<LongWall>(250, 300, wallWidth, 500, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            longWalls_.emplace_back(std::make_shared<LongWall>(250, 300, wallWidth, roomHeight - 300, (int)TimeWarriorTexture::BrickWall, wallWidth));
 
             roomSwitchers_.push_back(std::make_shared<RoomSwitcherObject>(500,300,50,50,2));
             break;
