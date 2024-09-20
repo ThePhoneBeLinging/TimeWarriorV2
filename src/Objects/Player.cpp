@@ -7,18 +7,20 @@
 #include "CollisionController.h"
 #include "TimeWarriorZValues.h"
 #include "TimeWarriorTexture.h"
+#include "EngineBase/EngineBase.h"
 
-Player::Player(float x, float y) : DrawAble(x,y,(int)TimeWarriorZValues::PLAYER,40,40,(int)TimeWarriorTexture::PlayerRight), speed_(SpeedAble(this)),collidable_(Collidable(this)), index_(0), timePassed_(0)
+Player::Player(float x, float y) : DrawAble(x,y,(int)TimeWarriorZValues::PLAYER,40,40,(int)TimeWarriorTexture::PlayerRight), speed_(std::make_shared<SpeedAble>(this)),collidable_(std::make_shared<Collidable>(this)), index_(0), timePassed_(0)
 {
     ghost_ = false;
     ghostIndex_ = 0;
+    EngineBase::addSpeedAble(std::weak_ptr(speed_));
 }
 
 void Player::x(float x)
 {
     float oldX = x_;
     DrawAble::x(x);
-    if (CollisionController::isCollidingWithSolid(&collidable_))
+    if (CollisionController::isCollidingWithSolid(collidable_.get()))
     {
         x_ = oldX;
     }
@@ -28,7 +30,7 @@ void Player::y(float y)
 {
     float oldY = y_;
     DrawAble::y(y);
-    if (CollisionController::isCollidingWithSolid(&collidable_))
+    if (CollisionController::isCollidingWithSolid(collidable_.get()))
     {
         y_ = oldY;
     }
@@ -92,8 +94,8 @@ void Player::resetPos(float x, float y)
 
     ghost_ = true;
     timePassed_ = 0;
-    speed_.xSpeed(0);
-    speed_.ySpeed(0);
+    speed_->xSpeed(0);
+    speed_->ySpeed(0);
 }
 
 void Player::kill()

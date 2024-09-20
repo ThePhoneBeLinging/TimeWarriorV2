@@ -23,8 +23,8 @@ public:
     void update(float deltaTime);
     void resetPos(float x, float y);
     void kill();
-    SpeedAble speed_;
-    Collidable collidable_;
+    std::shared_ptr<SpeedAble> speed_;
+    std::shared_ptr<Collidable> collidable_;
 private:
     std::vector<std::shared_ptr<SavedPosition>> positions_;
     float timePassed_;
