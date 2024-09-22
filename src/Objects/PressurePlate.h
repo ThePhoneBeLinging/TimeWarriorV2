@@ -9,6 +9,7 @@
 #include "ActivateAble/IActivateAble.h"
 #include "EngineBase/Collidable.h"
 #include "EngineBase/DrawAble.h"
+#include "EngineBase/SpeedAble.h"
 
 
 class PressurePlate : public DrawAble
@@ -20,6 +21,7 @@ public:
     void trigger();
     void notTrigger();
     Collidable collidable_;
+    std::shared_ptr<SpeedAble> speed_;
 private:
     std::shared_ptr<IActivateAble> activateAble_;
 

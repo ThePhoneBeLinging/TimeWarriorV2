@@ -48,6 +48,7 @@ void RoomCreator::setUpRoom(std::shared_ptr<Room> room ,int roomNumber)
     room->entranceX_ = 150;
     room->entranceY_ = 150;
     room->pressurePlates_.clear();
+    room->slidingDoors_.clear();
     room->longWalls_.clear();
     room->roomSwitchers_.clear();
     room->roomNumber_ = roomNumber;
@@ -56,9 +57,8 @@ void RoomCreator::setUpRoom(std::shared_ptr<Room> room ,int roomNumber)
         case 0:
         {
             room->pressurePlates_.emplace_back(std::make_shared<PressurePlate>(100,100));
-            auto door1 = std::make_shared<SlidingDoor>(250,250,250,300,0,50,0,-50);
-            room->pressurePlates_[0]->setActivateAble(door1);
-            EngineBase::addDrawAble(std::weak_ptr(door1));
+            room->slidingDoors_.emplace_back(std::make_shared<SlidingDoor>(250,250,250,300,0,50,0,-50));
+            room->pressurePlates_[0]->setActivateAble(room->slidingDoors_[0]);
 
             // longWalls around the room
 
@@ -87,6 +87,10 @@ void RoomCreator::setUpRoom(std::shared_ptr<Room> room ,int roomNumber)
     for (const auto& pressurePlate : room->pressurePlates_)
     {
         EngineBase::addDrawAble(std::weak_ptr(pressurePlate));
+    }
+    for (const auto& slidingDoor : room->slidingDoors_)
+    {
+        EngineBase::addDrawAble(std::weak_ptr(slidingDoor));
     }
 }
 

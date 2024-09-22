@@ -6,11 +6,11 @@
 
 #include "TimeWarriorZValues.h"
 #include "TimeWarriorTexture.h"
+#include "EngineBase/EngineBase.h"
 
-PressurePlate::PressurePlate(float x, float y) : DrawAble(x,y,(int)TimeWarriorZValues::PRESSUREPLATE,0,0,(int)TimeWarriorTexture::PressurePlateUp), collidable_(Collidable(this))
+PressurePlate::PressurePlate(float x, float y) : DrawAble(x,y,(int)TimeWarriorZValues::PRESSUREPLATE,50,50,(int)TimeWarriorTexture::PressurePlateUp), collidable_(Collidable(this)), speed_(std::make_shared<SpeedAble>(this))
 {
-    this->height(50);
-    this->width(50);
+    EngineBase::addSpeedAble(std::weak_ptr(speed_));
 }
 
 void PressurePlate::setActivateAble(std::shared_ptr<IActivateAble> activateAble)

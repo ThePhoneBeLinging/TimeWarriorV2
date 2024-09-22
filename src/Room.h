@@ -9,6 +9,7 @@
 #include "PressurePlate.h"
 #include "RoomSwitcherObject.h"
 #include "Wall.h"
+#include "ActivateAble/SlidingDoor.h"
 
 
 class Room
@@ -20,7 +21,7 @@ public:
     void handlePressurePlates(const std::vector<std::shared_ptr<Player>>& players);
     void offsetRoom(float deltaX, float deltaY);
     std::vector<std::shared_ptr<PressurePlate>> pressurePlates_;
-    std::vector<std::shared_ptr<Wall>> walls_;
+    std::vector<std::shared_ptr<SlidingDoor>> slidingDoors_;
     std::vector<std::shared_ptr<LongWall>> longWalls_;
     std::vector<std::shared_ptr<RoomSwitcherObject>> roomSwitchers_;
     float entranceX_;;

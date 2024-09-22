@@ -49,6 +49,18 @@ void Room::offsetRoom(float deltaX, float deltaY)
             speedAblesToUpdate.push_back(wall->speed_);
         }
     }
+    for (const auto& pressurePlate : pressurePlates_)
+    {
+        speedAblesToUpdate.push_back(pressurePlate->speed_);
+    }
+    for (const auto& slidingDoor : slidingDoors_)
+    {
+        speedAblesToUpdate.push_back(slidingDoor->speed_);
+    }
+    for (const auto& roomSwitcher : roomSwitchers_)
+    {
+        speedAblesToUpdate.push_back(roomSwitcher->speed_);
+    }
 
     for (const auto& speedAble : speedAblesToUpdate)
     {
