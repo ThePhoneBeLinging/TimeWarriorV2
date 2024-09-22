@@ -10,6 +10,16 @@
 #include "Objects/longWall.h"
 #include "Objects/ActivateAble/SlidingDoor.h"
 
+void RoomCreator::setUpRooms(int amountOfRooms)
+{
+    rooms_.resize(amountOfRooms);
+    for (int i = 0; i < amountOfRooms; i++)
+    {
+        rooms_[i] = std::make_shared<Room>(0,0);
+        setUpRoom(rooms_[i],i);
+    }
+}
+
 void RoomCreator::update(float deltaTime)
 {
     handleMovement();
@@ -64,7 +74,13 @@ void RoomCreator::setUpRoom(std::shared_ptr<Room> room ,int roomNumber)
             break;
         }
         case 1:
+        {
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomWidth + 0, roomHeight - wallWidth, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomWidth + roomWidth - wallWidth, 0, wallWidth, roomHeight, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomWidth, 500, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
             break;
+        }
+
         default:
             throw std::invalid_argument("Room number not found");
     }
@@ -74,10 +90,11 @@ void RoomCreator::setUpRoom(std::shared_ptr<Room> room ,int roomNumber)
     }
 }
 
+
 void RoomCreator::enterRoom(int roomNumber)
 {
-    currentRoom_ = std::make_shared<Room>(150,150);
-    setUpRoom(currentRoom_,roomNumber);
+    currentRoom_ = rooms_[roomNumber];
+
     players_.clear();
     players_.resize(5);
     playerIndex_ = 0;
@@ -124,3 +141,5 @@ void RoomCreator::handleMovement()
         players_[playerIndex_]->speed_->xSpeed(100);
     }
 }
+
+

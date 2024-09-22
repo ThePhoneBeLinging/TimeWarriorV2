@@ -15,6 +15,7 @@
 class RoomCreator
 {
 public:
+    static void setUpRooms(int amountOfRooms);
     static void update(float deltaTime);
     static void enterRoom(int roomNumber);
     static void resetRoom();
@@ -25,7 +26,6 @@ private:
     static inline std::vector<std::shared_ptr<Player>> players_;
     static inline std::vector<std::shared_ptr<Room>> rooms_;
     static inline int playerIndex_ = 0;
-    static inline int currentRoomIndex_ = 0;
 
 };
 

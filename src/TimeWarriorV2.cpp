@@ -18,6 +18,7 @@ void TimeWarriorV2::update(float deltaTime)
 void TimeWarriorV2::setUp()
 {
     TextureLoader::initTimeWarriorTextures();
+    RoomCreator::setUpRooms(2);
     RoomCreator::enterRoom(0);
 }
 
