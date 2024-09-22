@@ -18,7 +18,7 @@ void TimeWarriorV2::update(float deltaTime)
 void TimeWarriorV2::setUp()
 {
     TextureLoader::initTimeWarriorTextures();
-    RoomCreator::enterRoom(1);
+    RoomCreator::enterRoom(0);
 }
 
 void TimeWarriorV2::handleKeyBoard(float deltaTime)

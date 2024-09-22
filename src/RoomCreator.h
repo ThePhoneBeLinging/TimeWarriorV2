@@ -4,6 +4,7 @@
 
 #ifndef ROOMCREATOR_H
 #define ROOMCREATOR_H
+#include "Room.h"
 #include "Objects/Player.h"
 #include "Objects/PressurePlate.h"
 #include "Objects/Wall.h"
@@ -14,24 +15,18 @@
 class RoomCreator
 {
 public:
-    static void setUpRoom(int roomNumber);
     static void update(float deltaTime);
     static void enterRoom(int roomNumber);
     static void resetRoom();
 private:
     static void handleMovement();
-    static void handlePressurePlates();
-    static void handleRoomSwitchers();
+    static void setUpRoom(std::shared_ptr<Room> room ,int roomNumber);
+    static inline std::shared_ptr<Room> currentRoom_;
     static inline std::vector<std::shared_ptr<Player>> players_;
-    static inline std::vector<std::shared_ptr<PressurePlate>> pressurePlates_;
-    static inline std::vector<std::shared_ptr<Wall>> walls_;
-    static inline std::vector<std::shared_ptr<LongWall>> longWalls_;
-    static inline std::vector<std::shared_ptr<RoomSwitcherObject>> roomSwitchers_;
-    static inline float entranceX_ = 50;
-    static inline float entranceY_ = 50;
+    static inline std::vector<std::shared_ptr<Room>> rooms_;
     static inline int playerIndex_ = 0;
-    static inline int roomNumber_ = 0;
-    static inline bool enterPressed_ = false;
+    static inline int currentRoomIndex_ = 0;
+
 };
 
 
