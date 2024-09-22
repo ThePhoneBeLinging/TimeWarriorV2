@@ -39,7 +39,7 @@ void RoomCreator::update(float deltaTime)
     }
 }
 
-void RoomCreator::setUpRoom(std::shared_ptr<Room> room ,int roomNumber)
+void RoomCreator::setUpRoom(const std::shared_ptr<Room>& room ,int roomNumber)
 {
     int roomWidth = 1200;
     int roomHeight = 800;

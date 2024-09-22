@@ -21,7 +21,7 @@ public:
     static void resetRoom();
 private:
     static void handleMovement();
-    static void setUpRoom(std::shared_ptr<Room> room ,int roomNumber);
+    static void setUpRoom(const std::shared_ptr<Room>& room ,int roomNumber);
     static inline std::shared_ptr<Room> currentRoom_;
     static inline std::vector<std::shared_ptr<Player>> players_;
     static inline std::vector<std::shared_ptr<Room>> rooms_;
