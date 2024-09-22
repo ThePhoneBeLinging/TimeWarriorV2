@@ -31,77 +31,15 @@ SlidingDoor::~SlidingDoor()
 void SlidingDoor::activate()
 {
     speed_->xSpeed(activationXSpeed_);
-    if (activationXSpeed_ > 0)
-    {
-        if (targetX_ < x_)
-        {
-            x_ = targetX_;
-            speed_->xSpeed(0);
-        }
-    }
-    else if (activationXSpeed_ < 0)
-    {
-        if (targetX_ > x_)
-        {
-            x_ = targetX_;
-            speed_->xSpeed(0);
-        }
-    }
-
     speed_->ySpeed(activationYSpeed_);
-    if (activationYSpeed_ > 0)
-    {
-        if (targetY_ < y_)
-        {
-            y_ = targetY_;
-            speed_->ySpeed(0);
-        }
-    }
-    else if (activationYSpeed_ < 0)
-    {
-        if (targetY_ > y_)
-        {
-            y_ = targetY_;
-            speed_->ySpeed(0);
-        }
-    }
+    speed_->x_target(targetX_);
+    speed_->y_target(targetY_);
 }
 
 void SlidingDoor::deactivate()
 {
     speed_->xSpeed(nonActivationXSpeed_);
-    if (nonActivationXSpeed_ > 0)
-    {
-        if (originalX_< x_)
-        {
-            x_ = originalX_;
-            speed_->xSpeed(0);
-        }
-    }
-    else if (nonActivationXSpeed_ < 0)
-    {
-        if (originalX_ > x_)
-        {
-            x_ = originalX_;
-            speed_->xSpeed(0);
-        }
-    }
-
     speed_->ySpeed(nonActivationYSpeed_);
-    if (nonActivationYSpeed_ > 0)
-    {
-        if (originalY_ < y_)
-        {
-            y_ = originalY_;
-            speed_->ySpeed(0);
-        }
-    }
-    else if (nonActivationYSpeed_ < 0)
-    {
-        if (originalY_ > y_)
-        {
-            y_ = originalY_;
-            speed_->ySpeed(0);
-        }
-    }
+    speed_->x_target(originalX_);
+    speed_->y_target(originalY_);
 }
