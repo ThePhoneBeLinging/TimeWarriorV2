@@ -39,6 +39,41 @@ void Room::handlePressurePlates(const std::vector<std::shared_ptr<Player>>& play
     }
 }
 
+void Room::offsetRoom(float deltaX, float deltaY)
+{
+    std::list<std::shared_ptr<SpeedAble>> speedAblesToUpdate;
+    for (const auto& longWall : longWalls_)
+    {
+        for (const auto& wall : longWall->walls_)
+        {
+            speedAblesToUpdate.push_back(wall->speed_);
+        }
+    }
+
+    for (const auto& speedAble : speedAblesToUpdate)
+    {
+        speedAble->x_target(speedAble->drawAble_->x() + deltaX);
+        speedAble->y_target(speedAble->drawAble_->y() + deltaY);
+        if (deltaX > 0)
+        {
+            speedAble->xSpeed(250);
+        }
+        else
+        {
+            speedAble->xSpeed(-250);
+        }
+        if (deltaY > 0)
+        {
+            speedAble->ySpeed(250);
+        }
+        else
+        {
+            speedAble->ySpeed(-250);
+        }
+    }
+
+}
+
 int Room::handleRoomSwitchers(const std::vector<std::shared_ptr<Player>>& players)
 {
     for (const auto& roomSwitcher : roomSwitchers_)

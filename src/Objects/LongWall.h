@@ -14,7 +14,6 @@ class LongWall
 public:
     LongWall(float x, float y, int width, int height, int textureIndex, int diameterPerWall);
     ~LongWall();
-private:
     std::vector<std::shared_ptr<Wall>> walls_;
 };
 

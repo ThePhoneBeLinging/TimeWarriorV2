@@ -94,7 +94,13 @@ void RoomCreator::setUpRoom(std::shared_ptr<Room> room ,int roomNumber)
 void RoomCreator::enterRoom(int roomNumber)
 {
     currentRoom_ = rooms_[roomNumber];
-
+    if (roomNumber != 0)
+    {
+        for (const auto& room : rooms_)
+        {
+            room->offsetRoom(-1200,0);
+        }
+    }
     players_.clear();
     players_.resize(5);
     playerIndex_ = 0;

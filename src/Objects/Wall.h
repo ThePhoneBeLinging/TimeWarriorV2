@@ -8,6 +8,7 @@
 
 #include "EngineBase/Collidable.h"
 #include "EngineBase/DrawAble.h"
+#include "EngineBase/SpeedAble.h"
 
 
 class Wall : public DrawAble
@@ -16,6 +17,7 @@ public:
     Wall(float x, float y, int width, int height, int textureIndex);
     ~Wall() override;
     std::shared_ptr<Collidable> collidable_;
+    std::shared_ptr<SpeedAble> speed_;
 };
 
 

@@ -18,6 +18,7 @@ public:
     void handleLocalThings(const std::vector<std::shared_ptr<Player>>& players);
     int handleRoomSwitchers(const std::vector<std::shared_ptr<Player>>& players);
     void handlePressurePlates(const std::vector<std::shared_ptr<Player>>& players);
+    void offsetRoom(float deltaX, float deltaY);
     std::vector<std::shared_ptr<PressurePlate>> pressurePlates_;
     std::vector<std::shared_ptr<Wall>> walls_;
     std::vector<std::shared_ptr<LongWall>> longWalls_;
@@ -25,7 +26,7 @@ public:
     float entranceX_;;
     float entranceY_;
     int roomNumber_;
-    bool enterPressed_ = false;
+    bool switchingRooms_ = false;
 };
 
 
