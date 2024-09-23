@@ -19,6 +19,7 @@ public:
     static void update(float deltaTime);
     static void enterRoom(int roomNumber);
     static void resetRoom();
+    static bool isSwitchingRooms();
 private:
     static void handleMovement();
     static void setUpRoom(const std::shared_ptr<Room>& room ,int roomNumber);
@@ -26,6 +27,7 @@ private:
     static inline std::vector<std::shared_ptr<Player>> players_;
     static inline std::vector<std::shared_ptr<Room>> rooms_;
     static inline int playerIndex_ = 0;
+    static inline bool roomSwitching_ = false;
 
 };
 

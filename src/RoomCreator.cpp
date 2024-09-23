@@ -27,6 +27,7 @@ void RoomCreator::update(float deltaTime)
     int newRoom = currentRoom_->handleRoomSwitchers(players_);
     if (newRoom != -1)
     {
+        roomSwitching_ = true;
         enterRoom(newRoom);
         return;
     }
@@ -44,7 +45,8 @@ void RoomCreator::setUpRoom(const std::shared_ptr<Room>& room ,int roomNumber)
     int roomWidth = 1200;
     int roomHeight = 800;
     int wallWidth = 50;
-
+    int roomXOffset = 0;
+    int roomYOffset = 0;
     room->entranceX_ = 150;
     room->entranceY_ = 150;
     room->pressurePlates_.clear();
@@ -62,22 +64,23 @@ void RoomCreator::setUpRoom(const std::shared_ptr<Room>& room ,int roomNumber)
 
             // longWalls around the room
 
-            room->longWalls_.emplace_back(std::make_shared<LongWall>(0, 0, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
-            room->longWalls_.emplace_back(std::make_shared<LongWall>(0, 0, wallWidth, roomHeight, (int)TimeWarriorTexture::BrickWall, wallWidth));
-            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomWidth - wallWidth, 0, wallWidth, roomHeight, (int)TimeWarriorTexture::BrickWall, wallWidth));
-            room->longWalls_.emplace_back(std::make_shared<LongWall>(0, roomHeight - wallWidth, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset,roomYOffset, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset,roomYOffset, wallWidth, roomHeight, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset + roomWidth - wallWidth, roomYOffset, wallWidth, roomHeight, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset,roomYOffset + roomHeight - wallWidth, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
             // Top middle
-            room->longWalls_.emplace_back(std::make_shared<LongWall>(250, 0, wallWidth, 250, (int)TimeWarriorTexture::BrickWall, wallWidth));
-            room->longWalls_.emplace_back(std::make_shared<LongWall>(250, 300, wallWidth, roomHeight - 300, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset + 250,roomYOffset, wallWidth, 250, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset + 250,roomYOffset + 300, wallWidth, roomHeight - 300, (int)TimeWarriorTexture::BrickWall, wallWidth));
 
             room->roomSwitchers_.push_back(std::make_shared<RoomSwitcherObject>(500,300,50,50,1));
             break;
         }
         case 1:
         {
-            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomWidth + 0, roomHeight - wallWidth, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
-            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomWidth + roomWidth - wallWidth, 0, wallWidth, roomHeight, (int)TimeWarriorTexture::BrickWall, wallWidth));
-            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomWidth, 500, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            roomXOffset = roomWidth;
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset + 0, roomHeight - wallWidth + roomYOffset, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset + roomWidth - wallWidth, roomYOffset, wallWidth, roomHeight, (int)TimeWarriorTexture::BrickWall, wallWidth));
+            room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset,  roomYOffset+ 500, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
             break;
         }
 
@@ -130,7 +133,6 @@ void RoomCreator::resetRoom()
 
 void RoomCreator::handleMovement()
 {
-
     // Player movement
     players_[playerIndex_]->speed_->xSpeed(0);
     players_[playerIndex_]->speed_->ySpeed(0);
@@ -150,6 +152,11 @@ void RoomCreator::handleMovement()
     {
         players_[playerIndex_]->speed_->xSpeed(100);
     }
+}
+
+bool RoomCreator::isSwitchingRooms()
+{
+    return roomSwitching_;
 }
 
 
