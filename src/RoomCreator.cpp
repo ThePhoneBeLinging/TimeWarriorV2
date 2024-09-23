@@ -100,6 +100,7 @@ void RoomCreator::enterRoom(int roomNumber)
         {
             room->offsetRoom(-1200,0);
         }
+        // TODO VARIABLE TO CHANGE
         totalOffsetX = -1200;
     }
     players_.clear();
