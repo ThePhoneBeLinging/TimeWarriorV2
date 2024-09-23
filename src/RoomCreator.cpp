@@ -4,12 +4,6 @@
 
 #include "RoomCreator.h"
 
-#include "TimeWarriorTexture.h"
-#include "EngineBase/EngineBase.h"
-#include "EngineBase/KeyBoardKeys.h"
-#include "Objects/longWall.h"
-#include "Objects/ActivateAble/SlidingDoor.h"
-
 void RoomCreator::setUpRooms(int amountOfRooms)
 {
     rooms_.resize(amountOfRooms);
@@ -27,7 +21,6 @@ void RoomCreator::update(float deltaTime)
     int newRoom = currentRoom_->handleRoomSwitchers(players_);
     if (newRoom != -1)
     {
-        roomSwitching_ = true;
         enterRoom(newRoom);
         return;
     }
@@ -45,8 +38,8 @@ void RoomCreator::setUpRoom(const std::shared_ptr<Room>& room ,int roomNumber)
     int roomWidth = 1200;
     int roomHeight = 800;
     int wallWidth = 50;
-    int roomXOffset = 0;
-    int roomYOffset = 0;
+    int roomXOffset = totalOffsetX;
+    int roomYOffset = totalOffsetY;
     room->entranceX_ = 150;
     room->entranceY_ = 150;
     room->pressurePlates_.clear();
@@ -77,7 +70,7 @@ void RoomCreator::setUpRoom(const std::shared_ptr<Room>& room ,int roomNumber)
         }
         case 1:
         {
-            roomXOffset = roomWidth;
+            roomXOffset += roomWidth;
             room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset + 0, roomHeight - wallWidth + roomYOffset, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
             room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset + roomWidth - wallWidth, roomYOffset, wallWidth, roomHeight, (int)TimeWarriorTexture::BrickWall, wallWidth));
             room->longWalls_.emplace_back(std::make_shared<LongWall>(roomXOffset,  roomYOffset+ 500, roomWidth, wallWidth, (int)TimeWarriorTexture::BrickWall, wallWidth));
@@ -107,6 +100,7 @@ void RoomCreator::enterRoom(int roomNumber)
         {
             room->offsetRoom(-1200,0);
         }
+        totalOffsetX = -1200;
     }
     players_.clear();
     players_.resize(5);
@@ -156,7 +150,7 @@ void RoomCreator::handleMovement()
 
 bool RoomCreator::isSwitchingRooms()
 {
-    return roomSwitching_;
+    return currentRoom_->isSwitchingRooms();
 }
 
 

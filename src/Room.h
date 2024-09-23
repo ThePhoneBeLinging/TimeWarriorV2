@@ -20,6 +20,7 @@ public:
     int handleRoomSwitchers(const std::vector<std::shared_ptr<Player>>& players);
     void handlePressurePlates(const std::vector<std::shared_ptr<Player>>& players);
     void offsetRoom(float deltaX, float deltaY);
+    bool isSwitchingRooms();
     std::vector<std::shared_ptr<PressurePlate>> pressurePlates_;
     std::vector<std::shared_ptr<SlidingDoor>> slidingDoors_;
     std::vector<std::shared_ptr<LongWall>> longWalls_;
@@ -27,7 +28,6 @@ public:
     float entranceX_;;
     float entranceY_;
     int roomNumber_;
-    bool switchingRooms_ = false;
 };
 
 

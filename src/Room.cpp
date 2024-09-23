@@ -102,3 +102,19 @@ int Room::handleRoomSwitchers(const std::vector<std::shared_ptr<Player>>& player
     return -1;
 }
 
+bool Room::isSwitchingRooms()
+{
+    if (!longWalls_.empty())
+    {
+        if (!longWalls_[0]->walls_.empty())
+        {
+            return longWalls_[0]->walls_[0]->speed_->xSpeed() != 0 || longWalls_[0]->walls_[0]->speed_->ySpeed() != 0;
+        }
+    }
+    if (!pressurePlates_.empty())
+    {
+        return pressurePlates_[0]->speed_->xSpeed() != 0 || pressurePlates_[0]->speed_->ySpeed() != 0;
+    }
+    return false;
+}
+

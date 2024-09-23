@@ -6,13 +6,15 @@
 
 #include "RoomCreator.h"
 #include "EngineBase/EngineBase.h"
-#include "Objects/ActivateAble/SlidingDoor.h"
 #include "Texture/TextureLoader.h"
 
 void TimeWarriorV2::update(float deltaTime)
 {
-    RoomCreator::update(deltaTime);
-    handleKeyBoard(deltaTime);
+    if (not RoomCreator::isSwitchingRooms())
+    {
+        RoomCreator::update(deltaTime);
+        handleKeyBoard(deltaTime);
+    }
 }
 
 void TimeWarriorV2::setUp()

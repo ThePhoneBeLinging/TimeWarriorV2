@@ -10,7 +10,10 @@
 #include "Objects/Wall.h"
 #include "Objects/RoomSwitcherObject.h"
 #include "Objects/LongWall.h"
-
+#include "TimeWarriorTexture.h"
+#include "EngineBase/EngineBase.h"
+#include "EngineBase/KeyBoardKeys.h"
+#include "Objects/ActivateAble/SlidingDoor.h"
 
 class RoomCreator
 {
@@ -27,7 +30,8 @@ private:
     static inline std::vector<std::shared_ptr<Player>> players_;
     static inline std::vector<std::shared_ptr<Room>> rooms_;
     static inline int playerIndex_ = 0;
-    static inline bool roomSwitching_ = false;
+    static inline int totalOffsetX = 0;
+    static inline int totalOffsetY = 0;
 
 };
 
